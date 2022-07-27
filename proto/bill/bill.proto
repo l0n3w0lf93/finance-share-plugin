@@ -1,0 +1,37 @@
+syntax = "proto3";
+package proto;
+
+option go_package = "./proto/proto";
+
+service Bills {
+	rpc CreateBills (CreateBillsRequest) returns (CreateBillsReply);
+	rpc UpdateBills (UpdateBillsRequest) returns (UpdateBillsReply);
+	rpc DeleteBills (DeleteBillsRequest) returns (DeleteBillsReply);
+	rpc GetBills (GetBillsRequest) returns (GetBillsReply);
+	rpc ListBills (ListBillsRequest) returns (ListBillsReply);
+}
+
+message CreateBillsRequest {
+	string userId = 1;
+	string productId =2;
+    int64 amount = 3;
+    float price = 4;
+    int64 buyAt = 5;
+}
+message CreateBillsReply {
+	string id = 1;
+}
+
+message UpdateBillsRequest {}
+message UpdateBillsReply {}
+
+message DeleteBillsRequest {}
+message DeleteBillsReply {}
+
+message GetBillsRequest {
+	string code =1 ;
+}
+message GetBillsReply {}
+
+message ListBillsRequest {}
+message ListBillsReply {}
