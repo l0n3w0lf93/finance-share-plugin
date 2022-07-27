@@ -1,4 +1,4 @@
-package main
+package shared
 
 import (
 	bill "github.com/l0n3w0lf93/finance-share-plugin/proto/bill"

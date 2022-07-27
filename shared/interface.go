@@ -1,5 +1,5 @@
 // Package shared contains shared data between the host and plugins.
-package main
+package shared
 
 import (
 	"context"
