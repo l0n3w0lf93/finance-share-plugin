@@ -12,8 +12,11 @@ type GRPCClient struct {
 	billClient    bill.BillsClient
 }
 
-func (m *GRPCClient) CreateProducts(key string) error {
-	_, err := m.productclient.CreateProducts(context.Background(), &product.CreateProductsRequest{})
+func (m *GRPCClient) CreateProducts(key string, code string) error {
+	_, err := m.productclient.CreateProducts(context.Background(), &product.CreateProductsRequest{
+		Name: key,
+		Code: code,
+	})
 	return err
 }
 
@@ -32,7 +35,7 @@ type GRPCServer struct {
 }
 
 func (m *GRPCServer) CreateProducts(ctx context.Context, req *product.CreateProductsRequest) (*product.CreateProductsReply, error) {
-	return &product.CreateProductsReply{}, m.ProductImpl.CreateProducts("key", "value")
+	return &product.CreateProductsReply{}, m.ProductImpl.CreateProducts(req.Code, req.Name)
 }
 func (m *GRPCServer) UpdateProducts(ctx context.Context, req *product.UpdateProductsRequest) (*product.UpdateProductsReply, error) {
 	return &product.UpdateProductsReply{}, m.ProductImpl.UpdateProducts("key", "value")
