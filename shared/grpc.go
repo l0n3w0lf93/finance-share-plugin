@@ -19,7 +19,22 @@ func (m *GRPCClient) CreateProducts(key string, code string) error {
 	})
 	return err
 }
-
+func (m *GRPCClient) DeleteProducts(key string, name string) error {
+	_, err := m.productclient.DeleteProducts(context.Background(), &product.DeleteProductsRequest{})
+	return err
+}
+func (m *GRPCClient) UpdateProducts(key string, name string) error {
+	_, err := m.productclient.UpdateProducts(context.Background(), &product.UpdateProductsRequest{})
+	return err
+}
+func (m *GRPCClient) GetProducts(key string, name string) error {
+	_, err := m.productclient.GetProducts(context.Background(), &product.GetProductsRequest{})
+	return err
+}
+func (m *GRPCClient) ListProducts(key string, name string) error {
+	_, err := m.productclient.ListProducts(context.Background(), &product.ListProductsRequest{})
+	return err
+}
 func (m *GRPCClient) CreateBills(userId string, productId string, price float32, amount int64, buyAt int64) error {
 	_, err := m.billClient.CreateBills(context.Background(), &bill.CreateBillsRequest{ProductId: productId, UserId: userId, Amount: amount, Price: price, BuyAt: buyAt})
 	return err
