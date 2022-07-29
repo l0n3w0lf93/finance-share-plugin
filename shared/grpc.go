@@ -35,7 +35,7 @@ func (m *GRPCClient) ListProducts(key string, name string) error {
 	_, err := m.productclient.ListProducts(context.Background(), &product.ListProductsRequest{})
 	return err
 }
-func (m *GRPCClient) CreateBills(userId string, productId string, price float32, amount int64, buyAt int64) error {
+func (m *GRPCClient) CreateBills(userId string, productId string, amount int64, price float32, buyAt int64) error {
 	_, err := m.billClient.CreateBills(context.Background(), &bill.CreateBillsRequest{ProductId: productId, UserId: userId, Amount: amount, Price: price, BuyAt: buyAt})
 	return err
 }
